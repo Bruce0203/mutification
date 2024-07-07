@@ -10,11 +10,11 @@ struct Player<'a> {
 #[test]
 fn test() {
     let player: Player = Player { name: "nothing" };
-    let player: &Player = &player;
-    asdf(player);
+    let player_ref: &Player = &player;
+    asdf(player_ref);
     assert_eq!(player.name, "Bruce");
 }
 
 fn asdf(player: &Player) {
-    player.to_mut().name = "Bruce"
+    *player.to_mut() = Player { name: "Bruce" };
 }
