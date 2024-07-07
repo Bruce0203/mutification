@@ -1,6 +1,6 @@
 use std::hint::black_box;
 
-use to_mut::ToMut;
+use mutification::ToMut;
 
 #[derive(Debug, ToMut)]
 struct Player {}
