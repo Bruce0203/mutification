@@ -1,4 +1,4 @@
-# to mut
+# mutification
 Convert immutable reference to mutable reference.
 When creating a getter and setter as a trait to get a field from a structure in a complex gaming system, this is a crate that safely changes an immutable reference to a mutable reference so that you can bypass the Rust compiler rules where you can't borrow another field at the same time!
 
