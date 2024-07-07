@@ -8,6 +8,12 @@ When creating a getter and setter as a trait to get a field from a structure in 
 
 **example**
 ```rust
+use mutification::ToMut;
+
+#[derive(ToMut)]
+struct Player {
+    name: &'static str
+}
 fn test_to_mut(player: &Player) {
     player.to_mut().name = "Bruce";
 }
