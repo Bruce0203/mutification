@@ -22,18 +22,9 @@ pub fn derive_as_mut(input: TokenStream) -> TokenStream {
     let where_clause = item_struct.generics.where_clause;
     quote! {
         impl<#params_in_impl> #name<#params> #where_clause {
-            pub fn to_mut<'a>(&'a self) -> &'a mut Self {
-                use core::mem::ManuallyDrop;
-
-                #[repr(C)]
-                union Union<A, B> {
-                    a: ManuallyDrop<A>,
-                    b: ManuallyDrop<B>,
-                }
-
-                let a = ManuallyDrop::new(self);
-                let b: &mut Self = unsafe {ManuallyDrop::into_inner(Union { a }.b) };
-                b
+            pub fn to_mut<'mutification_to_mut>(&'mutification_to_mut self) -> &'mutification_to_mut mut Self {
+                let ptr = self as *const Self as *mut Self;
+                unsafe { &mut *ptr }
             }
         }
     }

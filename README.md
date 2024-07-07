@@ -4,3 +4,11 @@ When creating a getter and setter as a trait to get a field from a structure in 
 
 - `to_mut` crate is more conventient than `to-mut`/`to-mut-proc-macro`.
 - Support generics.
+
+
+**example**
+```rust
+fn test_to_mut(player: &Player) {
+    player.to_mut().name = "Bruce";
+}
+```
