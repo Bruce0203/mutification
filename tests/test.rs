@@ -1,5 +1,3 @@
-#![deny(invalid_reference_casting)]
-
 use mutification::ToMut;
 
 #[derive(Debug, ToMut)]
@@ -16,5 +14,5 @@ fn test() {
 }
 
 fn asdf(player: &Player) {
-    *player.to_mut() = Player { name: "Bruce" };
+    player.to_mut().name = "Bruce";
 }
